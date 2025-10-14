@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Random Email Generator</title>
+    <style>
+      * {
+        padding: 0%;
+        margin: 0%;
+      }
+      body {
+        background-color: rgb(76, 213, 223);
+        text-align: center;
+        font-family: monospace;
+      }
+      h3 {
+        margin-top: 10px;
+        font-size: 20px;
+      }
+      input[type="number"]::-webkit-inner-spin-button,
+      input[type="number"]::-webkit-outer-spin-button {
+        -webkit-appearance: none;
+        margin: 0;
+      }
+      input,
+      button {
+        border-radius: 5px;
+        border: none;
+        background-color: transparent;
+        box-shadow: 0 0 5px rgba(0, 0, 0, 0.5);
+      }
+      input {
+        width: 230px;
+        outline: none;
+        padding-left: 10px;
+        height: 30px;
+        margin: 10px 0;
+      }
+      button {
+        width: 240px;
+        height: 30px;
+      }
+      #prompt {
+        margin-top: 10px;
+        font-size: larger;
+      }
+    </style>
+  </head>
+  <body>
+    <h3>Random Email Generator</h3>
+    <input id="amount" type="number" placeholder="Enter a number..."/>
+    <br />
+    <button onclick="start()">Generate</button>
+    <p id="prompt"></p>
+  </body>
+  <script>
+    const amount = document.getElementById("amount");
+    const prompt = document.getElementById("prompt");
+    function start() {
+      if ((amount.value === "") | (amount.value <= 0)) {
+        prompt.innerHTML = "Enter a number first!";
+        setTimeout(() => {
+          prompt.innerHTML = "";
+        }, 2000);
+      } else {
+        window.pywebview.api.main(parseInt(amount.value));
+        prompt.innerHTML = amount.value+" Emails Generated Successfully!";
+        setTimeout(() => {
+          prompt.innerHTML = "";
+        }, 2000);
+      }
+    }
+  </script>
+</html>
