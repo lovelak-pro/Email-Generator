@@ -11,7 +11,7 @@ class APP:
             if not os.path.isdir('GENERATED_EMAILS'):
                 os.system('mkdir GENERATED_EMAILS')
             with open(f'GENERATED_EMAILS\\Gmail_{r}.txt', 'w') as login_details:
-                login_details.write('Email : '+str(random_hex)+f'@gmail.com\nPassword : {random_hex}')
+                login_details.write('Email : '+str(random_hex)+f'@gmail.com\nPassword : {random_hex[::-1]}')
 
 
 if __name__ == "__main__":
