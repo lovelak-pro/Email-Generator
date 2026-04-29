@@ -7,13 +7,23 @@ A simple desktop application to generate random Gmail addresses and passwords, b
 - User-friendly GUI with a modern look.
 - Each generated email/password pair is saved in a separate text file in the `GENERATED_EMAILS` folder.
 - Cross-platform (Windows, macOS, Linux) as long as Python and pywebview are supported.
+- Customizable email domains (e.g., Gmail, Yahoo, Hotmail) through a dropdown menu.
+
 
 ## Preview
+### Version 1.2 ( Latest )
+![image](src/v1.2.png)
+### Version 0.2 
+![image](src/v0.2.png)
+### Version 0.1
 ![image](src/v0.1.png)
+
 
 ## How It Works
 - The app uses Python's `secrets` module to generate secure random hex strings for email and password.
 - The frontend (HTML/CSS/JS) is loaded in a pywebview window.
+- The user inputs the number of emails to generate and selects a domain from the dropdown.
+
 - When the user enters a number and clicks "Generate", the app creates that many email/password pairs and saves them as `Gmail_1.txt`, `Gmail_2.txt`, etc.
 
 ## Usage
@@ -43,7 +53,8 @@ Email_Generator/
 ```
 
 ## Customization
-- You can change the email domain or password format by editing `email_generater.py`.
+- You can add more email domains by editing the `<select id="domain">` element in `src/index.html` and updating the corresponding logic in `email_generater.py`.
+- You can modify the password generation logic in `email_generater.py`.
 - The GUI can be customized by editing `src/index.html`.
 
 ## License

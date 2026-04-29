@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
@@ -13,7 +13,6 @@
         background-color: rgb(208, 208, 208);
         text-align: center;
         font-family: Arial, Helvetica, sans-serif;
-      
       }
       h3 {
         margin-top: 15px;
@@ -26,17 +25,17 @@
         margin: 0;
       }
       input,
-      button {
-        
+      button,
+      #domain {
         border: 2px black solid;
         background-color: transparent;
-        box-shadow: 3px  3px rgb(0, 0, 0);
-      transition: 0.5s;
+        box-shadow: 3px 3px rgb(0, 0, 0);
+        transition: 0.5s;
+        text-align: center;
       }
       input:hover,
-      button:hover{
-        box-shadow: 4px  4px rgb(0, 0, 0);
-
+      button:hover,#domain:hover {
+        box-shadow: 4px 4px rgb(0, 0, 0);
       }
       input {
         width: 230px;
@@ -45,37 +44,55 @@
         height: 30px;
         margin: 10px 0;
       }
+      #domain {
+        width: 240px;
+        height: 30px;
+        outline: none;
+        margin: -10px 0 5px 0;
+      }
       button {
         width: 240px;
         height: 30px;
       }
       #prompt {
         margin-top: 10px;
-        font-size: larger;
+        font-size: 16px;
+      }
+      #prompt a{
+        color:black;
+        /* text-decoration: underline; */
       }
     </style>
   </head>
   <body>
     <h3>Random Email Generator</h3>
-    <input id="amount" type="number" placeholder="Enter a number..."/>
+    <input id="amount" type="number" placeholder="Enter a number..." />
+    <br />
+    <select id="domain">
+      <option value="">Select a domain...</option>
+      <option value="@gmail.com">Gmail.com</option>
+      <option value="@yahoo.com">Yahoo.com</option>
+      <option value="@hotmail.com">Hotmail.com</option>
+    </select>
     <br />
     <button onclick="start()">Generate</button>
-    <p id="prompt"></p>
+    <p id="prompt">Developed by <a href="https://lovelak.rf.gd" target="_blank">Lovelak</a></p>
   </body>
   <script>
     const amount = document.getElementById("amount");
+    const domain = document.getElementById("domain");
     const prompt = document.getElementById("prompt");
     function start() {
       if ((amount.value === "") | (amount.value <= 0)) {
         prompt.innerHTML = "Enter a number first!";
         setTimeout(() => {
-          prompt.innerHTML = "";
+          prompt.innerHTML = 'Developed by <a href="https://lovelak.rf.gd" target="_blank">Lovelak</a>';
         }, 2000);
       } else {
-        window.pywebview.api.main(parseInt(amount.value));
-        prompt.innerHTML = amount.value+" Emails Generated Successfully!";
+        window.pywebview.api.main(parseInt(amount.value), domain.value);
+        prompt.innerHTML = amount.value + " Emails Generated Successfully!";
         setTimeout(() => {
-          prompt.innerHTML = "";
+          prompt.innerHTML = 'Developed by <a href="https://lovelak.rf.gd" target="_blank">Lovelak</a>';
         }, 2000);
       }
     }
